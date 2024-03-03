@@ -14,11 +14,11 @@ class GroupHelper:
         self.close_group_editor()
         return group_list
 
-    def add_new_group(self, name):
+    def add_new_group(self, group_name):
         self.open_group_editor()
         self.group_editor.window(auto_id="uxNewAddressButton").click()
         input = self.group_editor.window(class_name="Edit")
-        input.set_text(name)
+        input.set_text(group_name)
         input.type_keys("\n")
         self.close_group_editor()
 

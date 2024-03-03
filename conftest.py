@@ -16,7 +16,7 @@ def pytest_generate_tests(metafunc):
     for fixture in metafunc.fixturenames:
         if fixture.startswith("xlsx_"):
             testdata = load_from_xlsx(fixture[5:])
-            metafunc.parametrize(fixture, testdata, ids=[str(x) for x in testdata])
+            metafunc.parametrize(fixture, testdata, ids=[str(x[0]) for x in testdata])
 
 def load_from_xlsx(file):
     try:
@@ -31,7 +31,3 @@ def load_from_xlsx(file):
             xl.Quit()
         except:
             pass
-
-# def load_from_json(file):
-#      with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "data/%s.json" % file)) as f:
-#          return jsonpickle.decode(f.read())
