@@ -20,7 +20,8 @@ def pytest_generate_tests(metafunc):
 
 def load_from_xlsx(file):
     try:
-        file = r'C:\PycharmProjects\Python_b42_gui_tests\groups.xlsx'
+        project_dir = os.path.dirname(os.path.realpath(__file__))
+        file = os.path.join(project_dir, "groups.xlsx")
         xl = CreateObject("Excel.Application")
         xl.Visible = True
         wb = xl.Workbooks.Open(file)
