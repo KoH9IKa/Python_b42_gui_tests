@@ -15,10 +15,10 @@ def app(request):
 def pytest_generate_tests(metafunc):
     for fixture in metafunc.fixturenames:
         if fixture.startswith("xlsx_"):
-            testdata = load_from_xlsx(fixture[5:])
+            testdata = load_from_xlsx()
             metafunc.parametrize(fixture, testdata, ids=[str(x[0]) for x in testdata])
 
-def load_from_xlsx(file):
+def load_from_xlsx():
     try:
         project_dir = os.path.dirname(os.path.realpath(__file__))
         file = os.path.join(project_dir, "groups.xlsx")
